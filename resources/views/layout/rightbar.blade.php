@@ -78,7 +78,7 @@
 
                 <div class="d-flex flex-column gap-2">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-light" value="light">
+                        <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-light" value="light" checked>
                         <label class="form-check-label" for="topbar-color-light">Light</label>
                     </div>
 

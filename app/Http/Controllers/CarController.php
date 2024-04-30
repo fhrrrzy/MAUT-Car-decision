@@ -6,15 +6,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Models\Car;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CarController extends Controller
 {
-
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $cars = Car::select(['name', 'age', 'price', 'type', 'id']);
+            $cars = Car::select([
+                'id',
+                'name',
+                'age',
+                'price',
+                'kilometer_used',
+                'condition',
+                'fuel_efficiency',
+                'fuel_type',
+                'safety_measurement',
+                'warranty_showroom',
+                'warranty_store',
+                'type'
+            ]);
+            
             return DataTables::of($cars)
                 ->addColumn('action', function ($car) {
                     $editUrl = route('dashboard.cars.edit', $car->id);
@@ -23,11 +37,7 @@ class CarController extends Controller
     
                     return '<a href="' . $detailsUrl . '" class="btn btn-sm btn-info">Details</a>
                             <a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a>
-                            <form method="POST" action="' . $deleteUrl . '" style="display:inline">
-                                ' . csrf_field() . '
-                                ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
-                            </form>';
+                            <button class="btn btn-sm btn-danger delete-btn" data-url="' . $deleteUrl . '">Delete</button>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -44,7 +54,7 @@ class CarController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate([
+            $validatedData = $request->validate([
                 'name' => 'required|string',
                 'price' => 'required|integer',
                 'age' => 'required|integer',
@@ -62,37 +72,28 @@ class CarController extends Controller
             DB::beginTransaction();
 
             $car = new Car();
-            $car->name = $request->name;
-            $car->price = $request->price;
-            $car->age = $request->age;
-            $car->kilometer_used = $request->kilometer_used;
-            $car->condition = $request->condition;
-            $car->fuel_efficiency = $request->fuel_efficiency;
-            $car->fuel_type = $request->fuel_type;
-            $car->safety_measurement = $request->safety_measurement;
-            $car->warranty_showroom = $request->warranty_showroom;
-            $car->warranty_store = $request->warranty_store;
-            $car->type = $request->type;
+            $car->fill($validatedData);
 
             // Handle image upload
             if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = $car->uuid . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images/cars'), $imageName);
-                $car->image = 'images/cars/' . $imageName;
+                $imageName = $request->image->store('images/cars');
+                $car->image = $imageName;
             }
 
             $car->save();
 
             DB::commit();
 
-            return redirect()->route('dashboard.car.index')->with('success', 'Car added successfully!');
+            Alert::success('Success', 'Car added successfully!')->showConfirmButton('OK', '#3085d6');
+
+            return redirect()->route('dashboard.car.index');
         } catch (ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to add car: ' . $e->getMessage())->withInput();
+            Alert::error('Error', 'Failed to add car: ' . $e->getMessage())->showConfirmButton('OK', '#e3342f');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -111,9 +112,7 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $car = Car::findOrFail($id);
-
-            $request->validate([
+            $validatedData = $request->validate([
                 'name' => 'required|string',
                 'price' => 'required|integer',
                 'age' => 'required|integer',
@@ -130,38 +129,29 @@ class CarController extends Controller
 
             DB::beginTransaction();
 
-            // Update car attributes
-            $car->name = $request->name;
-            $car->price = $request->price;
-            $car->age = $request->age;
-            $car->kilometer_used = $request->kilometer_used;
-            $car->condition = $request->condition;
-            $car->fuel_efficiency = $request->fuel_efficiency;
-            $car->fuel_type = $request->fuel_type;
-            $car->safety_measurement = $request->safety_measurement;
-            $car->warranty_showroom = $request->warranty_showroom;
-            $car->warranty_store = $request->warranty_store;
-            $car->type = $request->type;
+            $car = Car::findOrFail($id);
+            $car->fill($validatedData);
 
-            // Handle image upload if a new image is provided
+            // Handle image upload
             if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = $car->uuid . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images/cars'), $imageName);
-                $car->image = 'images/cars/' . $imageName;
+                $imageName = $request->image->store('images/cars');
+                $car->image = $imageName;
             }
 
             $car->save();
 
             DB::commit();
 
-            return redirect()->route('dashboard.car.index')->with('success', 'Car updated successfully!');
+            Alert::success('Success', 'Car updated successfully!')->showConfirmButton('OK', '#3085d6');
+
+            return redirect()->route('dashboard.car.index');
         } catch (ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to update car: ' . $e->getMessage())->withInput();
+            Alert::error('Error', 'Failed to update car: ' . $e->getMessage())->showConfirmButton('OK', '#e3342f');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -175,10 +165,13 @@ class CarController extends Controller
 
             DB::commit();
 
-            return redirect()->route('dashboard.car.index')->with('success', 'Car deleted successfully!');
+            Alert::success('Success', 'Car deleted successfully!')->showConfirmButton('OK', '#3085d6');
+
+            return redirect()->route('dashboard.car.index');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to delete car: ' . $e->getMessage());
+            Alert::error('Error', 'Failed to delete car: ' . $e->getMessage())->showConfirmButton('OK', '#e3342f');
+            return redirect()->back();
         }
     }
 }

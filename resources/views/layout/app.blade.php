@@ -18,6 +18,9 @@
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="https://coderthemes.com/ubold/layouts/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
         <!-- third party css end -->
 
 		<!-- Theme Config Js -->
@@ -109,6 +112,9 @@
         <script src="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
         <script src="https://coderthemes.com/ubold/layouts/assets/libs/pdfmake/build/pdfmake.min.js"></script>
         <script src="https://coderthemes.com/ubold/layouts/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+
+        <script src="https://coderthemes.com/ubold/layouts/assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
+
         <!-- third party js ends -->
 
         @yield('scripts')
