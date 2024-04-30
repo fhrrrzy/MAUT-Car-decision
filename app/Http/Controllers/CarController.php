@@ -6,13 +6,34 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Models\Car;
+use DataTables;
 
 class CarController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        $cars = Car::all();
-        return view('dashboard.car.index', compact('cars'));
+        if ($request->ajax()) {
+            $cars = Car::select(['name', 'age', 'price', 'type', 'id']);
+            return DataTables::of($cars)
+                ->addColumn('action', function ($car) {
+                    $editUrl = route('dashboard.cars.edit', $car->id);
+                    $deleteUrl = route('dashboard.cars.destroy', $car->id);
+                    $detailsUrl = route('dashboard.cars.show', $car->id);
+    
+                    return '<a href="' . $detailsUrl . '" class="btn btn-sm btn-info">Details</a>
+                            <a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a>
+                            <form method="POST" action="' . $deleteUrl . '" style="display:inline">
+                                ' . csrf_field() . '
+                                ' . method_field('DELETE') . '
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
+                            </form>';
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    
+        return view('dashboard.cars.index');
     }
 
     public function create()
