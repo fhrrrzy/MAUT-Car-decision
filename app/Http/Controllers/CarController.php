@@ -48,7 +48,7 @@ class CarController extends Controller
 
     public function create()
     {
-        return view('dashboard.car.create');
+        return view('dashboard.cars.create');
     }
 
     public function store(Request $request)
@@ -86,7 +86,7 @@ class CarController extends Controller
 
             Alert::success('Success', 'Car added successfully!')->showConfirmButton('OK', '#3085d6');
 
-            return redirect()->route('dashboard.car.index');
+            return redirect()->route('dashboard.cars.index');
         } catch (ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -100,13 +100,13 @@ class CarController extends Controller
     public function show($id)
     {
         $car = Car::findOrFail($id);
-        return view('dashboard.car.show', compact('car'));
+        return view('dashboard.cars.show', compact('car'));
     }
 
     public function edit($id)
     {
         $car = Car::findOrFail($id);
-        return view('dashboard.car.edit', compact('car'));
+        return view('dashboard.cars.edit', compact('car'));
     }
 
     public function update(Request $request, $id)
@@ -144,7 +144,7 @@ class CarController extends Controller
 
             Alert::success('Success', 'Car updated successfully!')->showConfirmButton('OK', '#3085d6');
 
-            return redirect()->route('dashboard.car.index');
+            return redirect()->route('dashboard.cars.index');
         } catch (ValidationException $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
@@ -167,7 +167,7 @@ class CarController extends Controller
 
             Alert::success('Success', 'Car deleted successfully!')->showConfirmButton('OK', '#3085d6');
 
-            return redirect()->route('dashboard.car.index');
+            return redirect()->route('dashboard.cars.index');
         } catch (\Exception $e) {
             DB::rollBack();
             Alert::error('Error', 'Failed to delete car: ' . $e->getMessage())->showConfirmButton('OK', '#e3342f');

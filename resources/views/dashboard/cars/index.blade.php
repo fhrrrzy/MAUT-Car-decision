@@ -12,6 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <a href="{{ route('dashboard.cars.create') }}" class="btn btn-primary mb-3">Tambah Mobil</a>
                     <table class="table dt-responsive nowrap w-100" id="car-table">
                         <thead>
                             <tr>
