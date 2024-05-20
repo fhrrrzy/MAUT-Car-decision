@@ -18,13 +18,10 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->integer('age');
             $table->bigInteger('kilometer_used');
-            $table->enum('condition', range(1, 10));
             $table->integer('fuel_efficiency');
             $table->enum('fuel_type', ['bensin', 'diesel', 'elektrik']);
-            $table->enum('safety_measurement', range(1, 10));
             $table->date('warranty_showroom');
-            $table->date('warranty_store');
-            $table->enum('type', ['manual', 'auto', 'semi-auto']);
+            $table->enum('type', ['manual', 'auto', 'semiauto']);
             $table->text('image')->nullable()->default('default.png');
             $table->timestamps();
         });

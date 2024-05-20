@@ -18,6 +18,10 @@
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://coderthemes.com/ubold/layouts/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://coderthemes.com/ubold/layouts/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+
 
         <link href="https://coderthemes.com/ubold/layouts/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
@@ -35,6 +39,12 @@
 
 		<!-- Icons css -->
 		<link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+        <style>
+            .swal2-container.swal2-top-end.swal2-backdrop-show {
+                background: transparent !important;
+            }
+        </style>
     </head>
 
     <body>
