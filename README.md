@@ -8,6 +8,16 @@ The goal of this project is to simplify the process of buying a used vehicle by 
 This tool aims to guide users towards making informed decisions, thereby reducing the risks and uncertainties associated with buying a second-hand car. It is designed as a class assignment, demonstrating how advanced decision-making algorithms can be applied to practical, real-world scenarios.
 
 
+## Installation Guide
+- clone the repository `git clone git@github.com:fhrrrzy/MAUT-Car-decision.git`
+- get into directory `cd MAUT-Car-decision`
+- install dependencies `composer install`
+- configure database connection in `.env` take example from `.env.example`
+- run the migration and seeder `php artisan migrate:fresh --seed`
+- run the app `php artisan serve`   
+
+> Detault login for admin cms is admin/p!@#$%ssword
+
 ## Tech Stack
 - Laravel
 - Bootstrap
@@ -15,4 +25,4 @@ This tool aims to guide users towards making informed decisions, thereby reducin
 
 ## Third party library
 - datatables.js
-- dropfiy
+- dropfiy.js
