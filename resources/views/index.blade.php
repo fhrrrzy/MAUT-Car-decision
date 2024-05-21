@@ -314,11 +314,15 @@
                     <div class="mb-5">
                         <h1 class="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
                             data-aos="zoom-y-out">
-                            Tentang Kami </h1>
-                        <p data-aos="zoom-y-out" data-aos-delay="150">
-                            Kami adalah tim yang berdedikasi untuk membantu kamu menemukan mobil bekas yang sesuai dengan
-                            kebutuhan kamu. Kami menggunakan algoritma super canggih yang memanfaatkan teori utilitas
-                            multiatribut untuk membantu kamu membuat keputusan terbaik.
+                            Kontak Kami </h1>
+                        <p class="mb-5" data-aos="zoom-y-out" data-aos-delay="150">
+                            Jika kamu memiliki pertanyaan atau masukan, jangan ragu untuk menghubungi kami. Kami akan
+                            dengan senang hati membantu kamu.
+                        </p>
+                        <p data-aos="zoom-y-out" data-aos-delay="300">
+                            <ul class="list-disc ml-5">
+                                <li class="text-2xl font-bold">+62 813-6279-8581 (Zulham)</li>
+                            </ul>
                         </p>
                     </div>
 
