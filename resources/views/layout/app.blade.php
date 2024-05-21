@@ -5,7 +5,7 @@
 <!-- Mirrored from coderthemes.com/ubold/layouts/modern/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Apr 2024 01:12:39 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Starter | SPK</title>
+        <title>CDA - Car Decision App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{-- <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" /> --}}
         {{-- <meta content="Coderthemes" name="author" /> --}}

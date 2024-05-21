@@ -11,8 +11,9 @@ This tool aims to guide users towards making informed decisions, thereby reducin
 ## Installation Guide
 - clone the repository `git clone git@github.com:fhrrrzy/MAUT-Car-decision.git`
 - get into directory `cd MAUT-Car-decision`
-- install dependencies `composer install`
+- install dependencies `composer install` & `npm install`
 - configure database connection in `.env` take example from `.env.example`
+- run the npm development command `npm run dev`
 - run the migration and seeder `php artisan migrate:fresh --seed`
 - run the app `php artisan serve`   
 

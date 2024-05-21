@@ -260,7 +260,7 @@
                         </div>
                         <div class="col-md-8">
                             <h3 id="detail-car-modal-name">Mobil Keren</h3>
-                            <h5 id="detail-car-model-price" class="text-grey">Rp. 1.000.0000.000</h5>
+                            <h5 id="detail-car-modal-price" class="text-grey">Rp. 1.000.0000.000</h5>
                             <div class="row mb-3">
                                 <div class="col-lg-3">
                                     <div class="widget-rounded-circle card">
@@ -516,7 +516,7 @@
                             const car = response;
                             $('#detail-car-modal').modal('show');
                             $('#detail-car-modal-name').text(car.name);
-                            $('#detail-car-model-price').text(`Rp. ${car.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`);
+                            $('#detail-car-modal-price').text(`Rp. ${car.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`);
                             $('#detail-car-modal-release_date').text(car.release_date);
                             $('#detail-car-modal-first_registration_date').text(car.first_registration_date);
                             $('#detail-car-modal-kilometer_used').text(`${car.kilometer_used.toLocaleString()} Kilometer`);
