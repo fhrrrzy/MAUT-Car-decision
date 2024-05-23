@@ -36,7 +36,7 @@ class CarSeeder extends Seeder
                 'fuel_efficiency' => 14,
                 'fuel_type' => 'bensin',
                 'warranty_showroom' => '2026-05-01',
-                'type' => 'matic',
+                'type' => 'automatic',
                 'image' => 'default.png'
             ],
             [
@@ -49,7 +49,7 @@ class CarSeeder extends Seeder
                 'fuel_efficiency' => 12,
                 'fuel_type' => 'bensin',
                 'warranty_showroom' => '2024-12-01',
-                'type' => 'matic',
+                'type' => 'automatic',
                 'image' => 'default.png'
             ],
             [
@@ -75,7 +75,7 @@ class CarSeeder extends Seeder
                 'fuel_efficiency' => 11,
                 'fuel_type' => 'bensin',
                 'warranty_showroom' => '2024-09-01',
-                'type' => 'matic',
+                'type' => 'automatic',
                 'image' => 'default.png'
             ],
             [
@@ -114,7 +114,7 @@ class CarSeeder extends Seeder
                 'fuel_efficiency' => 14,
                 'fuel_type' => 'bensin',
                 'warranty_showroom' => '2025-04-01',
-                'type' => 'matic',
+                'type' => 'automatic',
                 'image' => 'default.png'
             ],
             [
@@ -140,7 +140,7 @@ class CarSeeder extends Seeder
                 'fuel_efficiency' => 16,
                 'fuel_type' => 'bensin',
                 'warranty_showroom' => '2025-01-01',
-                'type' => 'matic',
+                'type' => 'automatic',
                 'image' => 'default.png'
             ],
         ];
