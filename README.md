@@ -22,8 +22,10 @@ This tool aims to guide users towards making informed decisions, thereby reducin
 ## Tech Stack
 - Laravel
 - Bootstrap
+- Tailwindcss
 - Javascript
 
 ## Third party library
 - datatables.js
 - dropfiy.js
+- AOS.js
