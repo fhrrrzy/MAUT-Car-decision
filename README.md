@@ -1,4 +1,4 @@
-# Car Decision Helper App
+<h1 align=center>Car Decision Helper App</h1>
 
 <img src="pixel-car.png" align="center">
 
