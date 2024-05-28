@@ -17,7 +17,7 @@ This tool aims to guide users towards making informed decisions, thereby reducin
 - run the migration and seeder `php artisan migrate:fresh --seed`
 - run the app `php artisan serve`   
 
-> Detault login for admin cms is admin/p!@#$%ssword
+> Detault login for admin cms is admincda/p!@#$%ssword
 
 ## Tech Stack
 - Laravel
